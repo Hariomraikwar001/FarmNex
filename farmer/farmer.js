@@ -2,7 +2,7 @@ import {
   db,
   collection,
   addDoc
-} from "../firebase/firebase-config.js";
+} from "../firebase/firebase-configs.js";
 
 const btn =
 document.getElementById("addBtn");

@@ -1,21 +1,115 @@
-productList.innerHTML += `
+import { db, auth }
+from "../firebase/firebase-configs.js";
 
-  <div class="card">
+import {
+  collection,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    <img
-    src="${product.image}"
-    width="100%">
+import { signOut }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const productsContainer =
+document.getElementById("productList");
 
-    <h2>${product.name}</h2>
+async function loadProducts() {
 
-    <p>Price: ₹${product.price}</p>
+  const querySnapshot =
+    await getDocs(collection(db, "products"));
 
-    <p>Stock: ${product.stock}</p>
+  querySnapshot.forEach((doc) => {
 
-    <button>
-      Buy Now
-    </button>
+    const product = doc.data();
 
-  </div>
+    productsContainer.innerHTML += `
+      <div class="product-card">
 
-`;
+        <h3>${product.name}</h3>
+
+        <p>₹${product.price}</p>
+
+        <p>Stock: ${product.stock}</p>
+
+        <button class="addToCart">
+          Add To Cart
+        </button>
+
+      </div>
+    `;
+  });
+
+  const buttons =
+    document.querySelectorAll(".addToCart");
+
+  buttons.forEach((button, index) => {
+
+    button.addEventListener("click", () => {
+
+      const product =
+        querySnapshot.docs[index].data();
+
+      let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existingProduct =
+        cart.find(
+          item => item.name === product.name
+        );
+
+      if (existingProduct) {
+
+        existingProduct.quantity += 1;
+
+      } else {
+
+        product.quantity = 1;
+
+        cart.push(product);
+      }
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+      alert("Product Added To Cart");
+    });
+  });
+}
+
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    loadProducts();
+
+  } else {
+
+    window.location.href =
+    "../login.html";
+  }
+});
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+
+  signOut(auth)
+
+  .then(() => {
+
+    alert("Logout Successful");
+
+    window.location.href =
+    "../login.html";
+  })
+
+  .catch((error) => {
+
+    alert(error.message);
+  });
+});

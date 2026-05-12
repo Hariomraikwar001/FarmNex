@@ -2,42 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet"
+  href="/style.css">
 </head>
 <body>
-
 <header>
-  <h1>🏪 Dark Store Admin Panel</h1>
+  <h1>
+    🏪 Dark Store Admin Panel
+  </h1>
 </header>
-
 <div class="container">
-
+  <div class="card">
+    <h2>Upload Product</h2>
+    <input
+      type="text"
+      id="name"
+      placeholder="Product Name"
+    >
+    <input
+      type="number"
+      id="price"
+      placeholder="Price"
+    >
+    <input
+      type="number"
+      id="stock"
+      placeholder="Stock"
+    >
+    <button id="uploadBtn">
+      Upload Product
+    </button>
+  </div>
   <div class="card">
     <h2>GMV Metrics</h2>
-
     <p>Total SKUs: 120</p>
     <p>Active Deliveries: 32</p>
     <p>Weekly Revenue: ₹52,000</p>
   </div>
-
   <div class="card">
     <h2>Farmer Directory</h2>
-
     <p>Ramesh Patel ⭐ 4.8</p>
     <p>Suresh Yadav ⭐ 4.7</p>
   </div>
-
   <div class="card">
     <h2>Delivery Tracker</h2>
-
     <p>Order #102 → ETA 15 mins</p>
     <p>Order #110 → ETA 25 mins</p>
   </div>
-
 </div>
-
-<script src="admin.js"></script>
+<script type="module" src="./admin.js"></script>
 </body>
 </html>

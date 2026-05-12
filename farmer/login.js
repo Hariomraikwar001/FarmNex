@@ -2,7 +2,7 @@ import {
   auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
-} from "../firebase/firebase-config.js";
+} from "../firebase/firebase-configs.js";
 
 const signupBtn =
 document.getElementById("signupBtn");
