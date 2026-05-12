@@ -92,3 +92,13 @@ function removeItem(index) {
 }
 
 loadCart();
+function placeOrder(){
+
+  alert("Order Placed Successfully");
+
+  localStorage.removeItem("cart");
+
+  window.location.href =
+  "../tracking/tracking.html";
+
+}

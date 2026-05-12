@@ -1,8 +1,14 @@
 import {
-  db,
+  db
+}
+from "../firebase/firebase-configs.js";
+
+import {
   collection,
-  addDoc
-} from "../firebase/firebase-configs.js";
+  addDoc,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const btn =
 document.getElementById("addBtn");
@@ -41,4 +47,50 @@ btn.addEventListener("click", async () => {
 
   }
 
-});
+});async function loadDashboardStats(){
+
+  const querySnapshot =
+  await getDocs(
+    collection(db, "products")
+  );
+
+  let totalProducts = 0;
+  let lowStock = 0;
+  let revenue = 0;
+
+  querySnapshot.forEach((doc)=>{
+
+    const product = doc.data();
+
+    totalProducts++;
+
+    revenue +=
+    Number(product.price) *
+    Number(product.stock);
+
+    if(product.stock < 20){
+
+      lowStock++;
+
+    }
+
+  });
+
+  document.getElementById(
+    "totalProducts"
+  ).innerText =
+  "Total Products: " + totalProducts;
+
+  document.getElementById(
+    "lowStock"
+  ).innerText =
+  "Low Stock: " + lowStock;
+
+  document.getElementById(
+    "revenue"
+  ).innerText =
+  "Revenue: ₹" + revenue;
+
+}
+
+loadDashboardStats();

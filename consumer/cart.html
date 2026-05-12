@@ -13,7 +13,23 @@
 </head>
 
 <body>
+<nav class="navbar">
 
+  <h1>🛒 FarmNex Cart</h1>
+
+  <div>
+
+    <a href="../products/products.html">
+      Products
+    </a>
+
+    <a href="../farmer/dashboard.html">
+      Dashboard
+    </a>
+
+  </div>
+
+</nav>
   <nav>
     <h1>🛒 Cart</h1>
   </nav>
@@ -23,6 +39,14 @@
   </section>
 
   <h2 id="totalPrice"></h2>
+  <button
+  onclick="placeOrder()"
+  class="orderBtn"
+>
+
+  Place Order 🚚
+
+</button>
 
   <script src="./cart.js"></script>
 

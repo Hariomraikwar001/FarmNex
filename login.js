@@ -1,66 +1,47 @@
-import { auth }
-from "./firebase/firebase-configs.js";
+function login(){
 
-import {
+  const email =
+  document.getElementById("email").value;
 
-  createUserWithEmailAndPassword,
+  const password =
+  document.getElementById("password").value;
 
-  signInWithEmailAndPassword
+  if(
 
-} from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    email === "farmer@farmnex.com"
+    &&
 
-const email =
-document.getElementById("email");
+    password === "123456"
 
-const password =
-document.getElementById("password");
+  ){
 
-const signupBtn =
-document.getElementById("signupBtn");
-
-const loginBtn =
-document.getElementById("loginBtn");
-
-signupBtn.addEventListener("click", () => {
-
-  createUserWithEmailAndPassword(
-    auth,
-    email.value,
-    password.value
-  )
-
-  .then(() => {
-
-    alert("Signup Successful");
-
-  })
-
-  .catch((error) => {
-
-    alert(error.message);
-  });
-});
-
-loginBtn.addEventListener("click", () => {
-
-  signInWithEmailAndPassword(
-    auth,
-    email.value,
-    password.value
-  )
-
-  .then(() => {
-
-    alert("Login Successful");
+    alert("Farmer Login Success");
 
     window.location.href =
-"./consumer/marketplace.html";
+    "./farmer/dashboard.html";
 
-  })
+  }
 
-  .catch((error) => {
+  else if(
 
-    alert(error.message);
-  });
-});
+    email === "user@farmnex.com"
+    &&
+
+    password === "123456"
+
+  ){
+
+    alert("Consumer Login Success");
+
+    window.location.href =
+    "./products/products.html";
+
+  }
+
+  else{
+
+    alert("Invalid Email or Password");
+
+  }
+
+}

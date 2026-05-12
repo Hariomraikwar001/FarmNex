@@ -8,7 +8,7 @@
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0">
 
-  <title>FarmNex Login</title>
+  <title>Register</title>
 
   <style>
 
@@ -31,6 +31,7 @@
       background:white;
       padding:40px;
       border-radius:15px;
+
       width:350px;
 
       box-shadow:0 0 10px rgba(0,0,0,0.1);
@@ -45,7 +46,7 @@
 
     }
 
-    input{
+    input, select{
 
       width:100%;
       padding:12px;
@@ -74,14 +75,6 @@
 
     }
 
-    .info{
-
-      margin-top:20px;
-      font-size:14px;
-      color:#555;
-
-    }
-
   </style>
 
 </head>
@@ -90,53 +83,47 @@
 
 <div class="container">
 
-  <h1>🌱 FarmNex Login</h1>
+  <h1>🌱 Register</h1>
+
+  <input
+  type="text"
+  placeholder="Full Name">
 
   <input
   type="email"
-  id="email"
-  placeholder="Enter Email">
+  placeholder="Email">
 
   <input
   type="password"
-  id="password"
-  placeholder="Enter Password">
+  placeholder="Password">
 
-  <button onclick="login()">
+  <select>
 
-    Login
+    <option>Farmer</option>
+    <option>Consumer</option>
+
+  </select>
+
+  <button onclick="registerUser()">
+
+    Register
 
   </button>
 
-  <div class="info">
-
-    <p>
-      Farmer:
-      farmer@farmnex.com
-    </p>
-
-    <p>
-      Password:
-      123456
-    </p>
-
-    <hr>
-
-    <p>
-      Consumer:
-      user@farmnex.com
-    </p>
-
-    <p>
-      Password:
-      123456
-    </p>
-
-  </div>
-
 </div>
 
-<script src="./login.js"></script>
+<script>
+
+function registerUser(){
+
+  alert("Registration Successful");
+
+  window.location.href =
+  "./login.html";
+
+}
+
+</script>
 
 </body>
 </html>

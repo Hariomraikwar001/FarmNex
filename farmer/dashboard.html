@@ -2,36 +2,154 @@
 <html>
 
 <head>
+
   <title>Farmer Dashboard</title>
+
+  <style>
+
+    body{
+
+      margin:0;
+      font-family:Arial;
+      background:#f5f5f5;
+
+    }
+
+    .navbar{
+
+      background:green;
+      color:white;
+      padding:15px 20px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+    }
+
+    .navbar h1{
+
+      margin:0;
+
+    }
+
+    .navbar a{
+
+      color:white;
+      text-decoration:none;
+      margin-left:15px;
+      font-weight:bold;
+
+    }
+
+    .container{
+
+      width:90%;
+      max-width:700px;
+      margin:30px auto;
+
+    }
+
+    .stats{
+
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+      margin-bottom:20px;
+
+    }
+
+    input{
+
+      display:block;
+      margin:12px 0;
+      padding:12px;
+      width:100%;
+      border-radius:8px;
+      border:1px solid #ccc;
+
+    }
+
+    button{
+
+      padding:12px 20px;
+      background:green;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:16px;
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
-<h1>Farmer Dashboard</h1>
+<nav class="navbar">
 
-<input
-type="text"
-id="name"
-placeholder="Product Name">
+  <h1>🌱 Farmer Dashboard</h1>
 
-<input
-type="number"
-id="price"
-placeholder="Price">
+  <div>
 
-<input
-type="number"
-id="stock"
-placeholder="Stock">
+    <a href="../products/products.html">
+      Products
+    </a>
 
-<input
-type="text"
-id="image"
-placeholder="Paste Image URL">
+    <a href="../consumer/cart.html">
+      Cart
+    </a>
 
-<button id="addBtn">
-Add Product
-</button>
+  </div>
+
+</nav>
+
+<div class="container">
+
+  <div class="stats">
+
+    <h2 id="totalProducts">
+      Total Products: 0
+    </h2>
+
+    <h2 id="lowStock">
+      Low Stock: 0
+    </h2>
+
+    <h2 id="revenue">
+      Revenue: ₹0
+    </h2>
+
+  </div>
+
+  <input
+  type="text"
+  id="name"
+  placeholder="Product Name">
+
+  <input
+  type="number"
+  id="price"
+  placeholder="Price">
+
+  <input
+  type="number"
+  id="stock"
+  placeholder="Stock">
+
+  <input
+  type="text"
+  id="image"
+  placeholder="Paste Image URL">
+
+  <button id="addBtn">
+    Add Product
+  </button>
+
+</div>
 
 <script type="module" src="./farmer.js"></script>
 
